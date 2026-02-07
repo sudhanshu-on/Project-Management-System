@@ -1,0 +1,22 @@
+{
+    "name": "projectmanagementsystem",
+    "version": "1.0.0",
+    "description": "a project management application for beginners",
+    "keywords": [
+        "udemy",
+        "course",
+        "backend",
+        "api",
+        "creation"
+    ],
+    "license": "ISC",
+    "author": "Sudhanshu Bagde",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "node index.js"
+    },
+    "devDependencies": {
+        "prettier": "^3.8.1"
+    }
+}
