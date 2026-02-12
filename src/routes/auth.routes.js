@@ -1,8 +1,17 @@
 import { Router } from "express";
 import { registerUser } from "../controllers/auth.controller.js";
+import { validate } from "../middlewares/validator.middleware.js";
+import { userRegisterValidator } from "../validators/index.js";
+import { login } from "../controllers/auth.controller.js";
 
-const registerRouter = Router();
+const router = Router();
 
-registerRouter.route("/register").post(registerUser);
+router
+    .route("/register")
+    .post(userRegisterValidator, validate, registerUser);
 
-export default registerRouter;
+router
+    .route("/login")
+    .post(login);
+
+export default router;

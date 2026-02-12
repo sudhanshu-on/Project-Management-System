@@ -14,6 +14,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
         await user.save({ validateBeforeSave: false });
         return { accessToken, refreshToken };
     } catch (error) {
+        console.error("Token generation error:", error);
         throw new ApiError(
             500,
             "Something went wrong while generating access token",
@@ -22,7 +23,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 };
 
 const registerUser = asyncHandler(async (req, res) => {
-    const { email, username, password, role} = req.body;
+    const { email, username, password, role } = req.body;
 
     const existedUser = await User.findOne({
         $or: [{ username }, { email }],
@@ -66,7 +67,10 @@ const registerUser = asyncHandler(async (req, res) => {
     );
 
     if (!createdUser) {
-        throw new ApiError(500, "Something went wrong while registering a user");
+        throw new ApiError(
+            500,
+            "Something went wrong while registering a user",
+        );
     }
 
     return res
@@ -80,4 +84,54 @@ const registerUser = asyncHandler(async (req, res) => {
         );
 });
 
-export { registerUser, generateAccessAndRefreshTokens };
+const login = asyncHandler(async (req, res) => {
+    const { email, username, password } = req.body;
+
+    if (!username && !email) {
+        throw new ApiError(400, "Email is required");
+    }
+
+    const user = await User.findOne({
+        $or: [{ username }, { email }],
+    });
+
+    if (!user) {
+        throw new ApiError(
+            401,
+            "No user is registered with this email id or username",
+        );
+    }
+
+    const isPasswordValid = await user.isPasswordCorrect(password);
+
+    if (!isPasswordValid) {
+        throw new ApiError(402, "Invalid credentials");
+    }
+
+    const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(
+        user._id,
+    );
+
+    const loggedInUser = await User.findById(user._id).select(
+        "-password -refreshToken -emailVerificationToken -emailVerificationExpiry",
+    );
+
+    const options = {
+        httpOnly: true,
+        secure: true,
+    };
+
+    return res
+        .status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
+        .json(
+            new ApiResponse(200, {
+                user: loggedInUser,
+                accessToken,
+                refreshToken,
+            }),
+        );
+});
+
+export { registerUser, login };

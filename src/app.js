@@ -1,5 +1,6 @@
 import express from "express"
 import cors from "cors"
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -7,6 +8,9 @@ const app = express();
 app.use(express.json({limit:"16kb"}));
 app.use(express.urlencoded({extended:"true",limit:"16kb"}))
 app.use(express.static("public"));
+
+//cookie configuration
+app.use(cookieParser()); 
 
 //cors configurations
 app.use(cors({
@@ -27,5 +31,19 @@ app.use("/api/v1/healthCheckRouter",healthCheckRouter);
 app.get("/",(req,res)=>{
     res.send("Welcome to the Home Page of PMS");
 })
+
+// Error handling middleware - must be last
+// app.use((err, req, res, next) => {
+//     const statusCode = err.statusCode || 500;
+//     const message = err.message || "Internal Server Error";
+//     const errors = err.errors || [];
+
+//     res.status(statusCode).json({
+//         statusCode,
+//         message,
+//         errors,
+//         success: false
+//     });
+// });
 
 export default app;
