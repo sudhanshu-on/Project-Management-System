@@ -1,8 +1,7 @@
 import { Router } from "express";
-import { logOutUser, registerUser } from "../controllers/auth.controller.js";
+import { registerUser, login, logOutUser, currentUser } from "../controllers/auth.controller.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import { userRegisterValidator, userLoginValidator } from "../validators/index.js";
-import { login } from "../controllers/auth.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
@@ -18,5 +17,9 @@ router
 router
     .route("/logout")
     .post(verifyJWT, logOutUser)
+
+router 
+    .route("/currentuser")
+    .get(currentUser)
 
 export default router;
