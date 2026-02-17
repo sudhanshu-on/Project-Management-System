@@ -23,6 +23,9 @@ This project is designed to help beginners learn project management concepts and
 - Node.js (optional, if using npm for development)
 - A code editor (VS Code, Sublime Text, etc.)
 
+
+**Email verification is a quick process, the verificationToken should not last long, manually testing them is difficult, once refreshed they are gone
+
 ### Installation
 
 1. **Clone the repository**
