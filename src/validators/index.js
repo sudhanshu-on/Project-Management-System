@@ -21,6 +21,7 @@ const userRegisterValidator = () => {
         body("role").trim().notEmpty().withMessage("role must not be empty"),
     ];
 }
+
 const userLoginValidator = () => {
     return [
         body("username").optional().trim().notEmpty().withMessage("username is required"),
@@ -34,4 +35,24 @@ const userLoginValidator = () => {
         body("password").trim().notEmpty().withMessage("password is required"),
     ];
 };
-export { userRegisterValidator, userLoginValidator };
+
+const userChangeCurrentPasswordValidator = () => {
+    return [
+        body("oldPassword").notEmpty().withMessage("Old password is required"),
+        body("newPassword").notEmpty().withMessage("New password is required"),
+    ]
+}
+
+const userForgotPasswordValidator = () => {
+    return [
+        body("email").notEmpty().withMessage("email is required").isEmail().withMessage("email is invalid"),
+    ]
+}
+
+const userResetForgotPasswordValidator = () => {
+    return [
+        body("newPassword").notEmpty().withMessage("password is required")
+    ]
+}
+
+export { userRegisterValidator, userLoginValidator, userChangeCurrentPasswordValidator, userForgotPasswordValidator, userResetForgotPasswordValidator};
