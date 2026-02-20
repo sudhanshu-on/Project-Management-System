@@ -27,6 +27,7 @@ This project is designed to help beginners learn project management concepts and
 **Email verification is a quick process, the verificationToken should not last long, manually testing them is difficult, once refreshed they are gone
 **After making changes in readMe file, we always need to pull first before pushing new code
 **Started designing models
+**Due to antarang had to edit a BTS which took whole day
 
 
 ### Installation
