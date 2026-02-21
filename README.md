@@ -28,6 +28,7 @@ This project is designed to help beginners learn project management concepts and
 **After making changes in readMe file, we always need to pull first before pushing new code
 **Started designing models
 **Due to antarang had to edit a BTS which took whole day
+**Its evening after the day and done with the models for the project auth.
 
 
 ### Installation
