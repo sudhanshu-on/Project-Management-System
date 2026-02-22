@@ -29,6 +29,7 @@ This project is designed to help beginners learn project management concepts and
 **Started designing models
 **Due to antarang had to edit a BTS which took whole day
 **Its evening after the day and done with the models for the project auth.
+**Last day of antarang, response for bts was not according to expectation, no worries, COMPSA secured 2nd rank overall 
 
 
 ### Installation
