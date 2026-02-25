@@ -32,6 +32,7 @@ This project is designed to help beginners learn project management concepts and
 **Last day of antarang, response for bts was not according to expectation, no worries, COMPSA secured 2nd rank overall 
 **Done with half of the controllers
 **Done with all the routes and controllers and debugging is on
+**Tomorrow is my interview so no debugging for today, wish me luch
 
 ### Installation
 
