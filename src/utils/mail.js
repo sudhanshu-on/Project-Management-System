@@ -41,7 +41,7 @@ const sendEmail = async (options)=>{
 const emailVerificationMailgenContent = (username, verificationUrl) => {
     return {
         body: {
-            name: username,
+            username: username,
             intro: "Welcome to Project Management System! We're very excited to have you on board.",
             action: {
                 instructions: "To get started with PMS, please click here:",
@@ -59,7 +59,7 @@ const emailVerificationMailgenContent = (username, verificationUrl) => {
 const resetPasswordMailgenContent = (username, passwordResetUrl) => {
     return {
         body: {
-            name: username,
+            projectName: username,
             intro: "Welcome to PMS! We got a request to reset the password of your account.",
             action: {
                 instructions: "To reset password with PMS, please click here:",

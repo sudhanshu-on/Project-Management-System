@@ -23,10 +23,13 @@ app.use(cors({
 //import routes
 import healthCheckRouter from '../src/routes/healthecheck.route.js'
 import registerRouter from "./routes/auth.routes.js";
+import projectRouter from "./routes/project.routes.js"
 
 app.use("/api/v1/auth", registerRouter);
 
 app.use("/api/v1/healthCheckRouter",healthCheckRouter);
+
+app.use("/api/v1/projects", projectRouter);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to the Home Page of PMS");
