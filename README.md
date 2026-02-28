@@ -34,6 +34,7 @@ This project is designed to help beginners learn project management concepts and
 **Done with all the routes and controllers and debugging is on
 **Tomorrow is my interview so no debugging for today, wish me luck
 **Done with testing of most of the routes, some are there with bugs will sort them tomorrow
+**Didn't did much today tried to write a code only which was little 
 
 ### Installation
 
