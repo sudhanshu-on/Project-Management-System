@@ -36,7 +36,7 @@ This project is designed to help beginners learn project management concepts and
 **Done with testing of most of the routes, some are there with bugs will sort them tomorrow
 **Didn't did much today tried to write a code only which was little
 **Was preparing for CT, but atleast one controller can be written
-
+**Get tasks was successfully debuged and tested on postman
 ### Installation
 
 1. **Clone the repository**
