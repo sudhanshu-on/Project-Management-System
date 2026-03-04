@@ -38,6 +38,8 @@ This project is designed to help beginners learn project management concepts and
 **Was preparing for CT, but atleast one controller can be written
 **Get tasks was successfully debuged and tested on postman
 **GetTaskByTaskId done
+**UpdateTask done
+
 ### Installation
 
 1. **Clone the repository**
