@@ -24,6 +24,12 @@ app.use(cors({
 import healthCheckRouter from '../src/routes/healthecheck.route.js'
 import registerRouter from "./routes/auth.routes.js";
 import projectRouter from "./routes/project.routes.js"
+import taskRouter from "./routes/task.routes.js"
+import subtaskRouter from "./routes/subtask.routes.js"
+
+app.use("/api/v1/tasks", subtaskRouter)
+
+app.use("/api/v1/tasks", taskRouter);
 
 app.use("/api/v1/auth", registerRouter);
 

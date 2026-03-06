@@ -4,6 +4,7 @@ import { asyncHandler } from "../utils/async-handler.js";
 import jwt from "jsonwebtoken";
 import { ProjectMember } from "../models/projectmember.models.js";
 import mongoose from "mongoose";
+import { Project } from "../models/project.models.js";
 
 export const verifyJWT = asyncHandler(async (req, res, next) => {
     const authHeader = req.header("Authorization");
@@ -38,31 +39,38 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
 });
 
 export const validateProjectPermission = (roles = []) => {
+    //changed whole function
     return asyncHandler(async (req, res, next) => {
         const { projectId } = req.params;
 
         if (!projectId) {
-            throw new ApiError(404, "Project Id is missing");
+            throw new ApiError(400, "Project ID is missing");
         }
-        const project = await ProjectMember.findOne({
-            project: new mongoose.Types.ObjectId(projectId),
-            user: new mongoose.Types.ObjectId(req.user._id),
+
+        const projectMember = await ProjectMember.findOne({
+            project: projectId,
+            user: req.user._id,
         });
 
-        if (!project) {
+        console.log({
+            projectId,
+            userId: req.user._id,
+            projectMember: projectMember,
+        });
+
+        if (!projectMember) {
             throw new ApiError(403, "No project found for the user");
         }
 
-        const givenRole = project?.role;
+        req.projectMember = projectMember;
 
-        req.user.role = givenRole;
-
-        if (!roles.includes(givenRole)) {
+        if (roles.length && !roles.includes(projectMember.role)) {
             throw new ApiError(
                 403,
-                "You don't have permission to perform this action",
+                "You do not have permission to perform this action",
             );
         }
+
         next();
     });
 };

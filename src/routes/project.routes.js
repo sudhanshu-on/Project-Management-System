@@ -26,21 +26,19 @@ const router = Router();
 router.use(verifyJWT);
 
 //secured routes
-router.route("/").get(getProjects);
-router.route("/").post(createProjectValidator(), validate, createProject);
+router
+    .route("/")
+    .get(getProjects)
+    .post(createProjectValidator(), validate, createProject);
 router
     .route("/:projectId")
-    .get(validateProjectPermission(AvailableUserRoles), getProjectById);
-router
-    .route("/:projectId")
+    .get(validateProjectPermission(AvailableUserRoles), getProjectById)
     .put(
         validateProjectPermission([UserRolesEnum.ADMIN]),
         updateProjectValidator(),
         validate,
         updateProjectById,
-    );
-router
-    .route("/:projectId")
+    )
     .delete(
         validateProjectPermission([UserRolesEnum.ADMIN]),
         deleteProjectById,

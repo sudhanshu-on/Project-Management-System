@@ -109,22 +109,20 @@ const getProjectById = asyncHandler(async (req, res) => {
 });
 
 const updateProjectById = asyncHandler(async (req, res) => {
-    const { updatedName, updatedDescription } = req.body;
+    const { updatedProjectName, updatedProjectDescription } = req.body;
     const { projectId } = req.params;
 
-    console.log(updatedName, updatedDescription);
-    
     const project = await Project.findByIdAndUpdate(
         projectId,
         {
-            projectName: updatedName,
-            description: updatedDescription,
+            projectName: updatedProjectName,
+            description: updatedProjectDescription,
         },
         {
             new: true,
         },
     );
-    console.log("🔥 CONTROLLER HIT 2");
+
     if (!project) {
         throw new ApiError(404, "Project not found");
     }
@@ -211,12 +209,12 @@ const addProjectMember = asyncHandler(async (req, res) => {
 
     await ProjectMember.findOneAndUpdate(
         {
-            user: new mongoose.Types.ObjectId(user._id),
-            project: new mongoose.Types.ObjectId(projectId),
+            user: user._id,
+            project: projectId,
         },
         {
-            user: new mongoose.Types.ObjectId(user._id),
-            project: new mongoose.Types.ObjectId(projectId),
+            user: user._id,
+            project: projectId,
             role: role,
         },
         {
