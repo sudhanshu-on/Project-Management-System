@@ -44,6 +44,7 @@ This project is designed to help beginners learn project management concepts and
 **I have dual paper each day from not so i think i won't be able to work here
 **Cooked because of continuous examinations
 **Last clutch for CT1 tomorrow will write real code
+**Done with all the CT and now will do things here just debugging and all
 
 ### Installation
 
