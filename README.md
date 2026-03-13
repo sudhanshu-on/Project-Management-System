@@ -45,7 +45,7 @@ This project is designed to help beginners learn project management concepts and
 **Cooked because of continuous examinations
 **Last clutch for CT1 tomorrow will write real code
 **Done with all the CT and now will do things here just debugging and all
-**OK
+**OK made a Backend App for notes will soon upload 
 
 ### Installation
 
